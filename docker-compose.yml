@@ -14,6 +14,7 @@ services:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=admin
       - RABBITMQ_ERLANG_COOKIE="YSJSOIPIQHPEZQSUII"
+      - RABBITMQ_NODENAME=rabbitmq
     networks:
       - prod
     volumes:
@@ -29,6 +30,7 @@ services:
         - RABBITMQ_DEFAULT_USER=admin
         - RABBITMQ_DEFAULT_PASS=admin
         - RABBITMQ_ERLANG_COOKIE="YSJSOIPIQHPEZQSUII"
+        - RABBITMQ_NODENAME=rabbitmq
       networks:
         - prod
       volumes:
@@ -44,6 +46,7 @@ services:
         - RABBITMQ_DEFAULT_USER=admin
         - RABBITMQ_DEFAULT_PASS=admin
         - RABBITMQ_ERLANG_COOKIE="YSJSOIPIQHPEZQSUII"
+        - RABBITMQ_NODENAME=rabbitmq
       networks:
         - prod
       volumes:
