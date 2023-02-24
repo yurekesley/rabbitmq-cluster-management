@@ -1,20 +1,12 @@
-# PRECISA CRIAR UMA NET EXTERNA 
-# docker network create --scope=swarm --driver=overlay --attachable rabbitmq
-# docker stack deploy -c docker-compose.yml rabbitmq
-# Adicionar Label 
-# docker node update --label-add rabbitmq1=true wekfvm5sly7z2t6qtmv5u2qlq
-# docker node update --label-add rabbitmq2=true wekfvm5sly7z2t6qtmv5u2qlq
-# docker node update --label-add rabbitmq3=true wekfvm5sly7z2t6qtmv5u2qlq
 version: "3.6"
 services:
   rabbitmq1:
-    image: rabbitmq:local
+    image: yurekesley/rabbitmq:3.7.8-cluster-management
     hostname: rabbitmq1
     environment:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=admin
       - RABBITMQ_ERLANG_COOKIE="YSJSOIPIQHPEZQSUII"
-      - RABBITMQ_NODENAME=rabbitmq
     networks:
       - prod
     volumes:
@@ -24,13 +16,12 @@ services:
       placement:
         constraints: [node.labels.rabbitmq1 == true]
   rabbitmq2:
-      image: rabbitmq:local
+      image: yurekesley/rabbitmq:3.7.8-cluster-management
       hostname: rabbitmq2
       environment:
         - RABBITMQ_DEFAULT_USER=admin
         - RABBITMQ_DEFAULT_PASS=admin
         - RABBITMQ_ERLANG_COOKIE="YSJSOIPIQHPEZQSUII"
-        - RABBITMQ_NODENAME=rabbitmq
       networks:
         - prod
       volumes:
@@ -40,13 +31,12 @@ services:
         placement:
           constraints: [node.labels.rabbitmq2 == true]
   rabbitmq3:
-      image: rabbitmq:local
+      image: yurekesley/rabbitmq:3.7.8-cluster-management
       hostname: rabbitmq3
       environment:
         - RABBITMQ_DEFAULT_USER=admin
         - RABBITMQ_DEFAULT_PASS=admin
         - RABBITMQ_ERLANG_COOKIE="YSJSOIPIQHPEZQSUII"
-        - RABBITMQ_NODENAME=rabbitmq
       networks:
         - prod
       volumes:
